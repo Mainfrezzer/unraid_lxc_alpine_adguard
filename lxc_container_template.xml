@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LXC version="0.1">
+  <Name>AdGuard</Name>
+  <Distribution>alpine</Distribution>
+  <Release>3.21</Release>
+  <Architecture>amd64</Architecture>
+  <Repository>https://github.com/Mainfrezzer/unraid_lxc_alpine_adguard</Repository>
+  <Description>Unbound, AdGuard, keepalived</Description>
+  <Autostart>true</Autostart>
+  <Beta>True</Beta>
+  <Support>https://support.me.pls</Support>
+  <Source>https://adguard.com/</Source>
+  <Project>https://github.com/AdguardTeam/AdGuardHome</Project>
+  <Overview>This LXC container contains a fully fledged non caching DNS Unbound instance alongside with AdGuard for AdBlocking and keepalived for high availability.&#xD;
+Please note that keepalived is not installed by default
+**Username:** admin
+**Password:** adguardhome</Overview>
+  <Category>Tools:</Category>
+  <WebUI>http://[IP]:3000</WebUI>
+  <Icon>https://raw.githubusercontent.com/Mainfrezzer/UnRaid-Templates/main/icon/adguard.png</Icon>
+  <DonateText>If you like my work (or not) please </DonateText>
+  <DonateLink>https://payme.now/pls</DonateLink>
+  <Requires>unRAID server</Requires>
+</LXC>
