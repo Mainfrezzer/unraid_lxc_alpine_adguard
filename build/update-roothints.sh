@@ -20,8 +20,8 @@ elif [ "${UB_FOLDER}/new.${FILE_NAME##*.}" -nt "${UB_FOLDER}/${FILE_NAME}" ]; th
   echo "Update from ${FILE_NAME}, restarting service: ${SERVICE_NAME}"
   cp ${UB_FOLDER}/new.${FILE_NAME##*.} ${UB_FOLDER}/${FILE_NAME}
   rm ${UB_FOLDER}/new.${FILE_NAME##*.}
-  systemctl restart ${SERVICE_NAME}
-else
+  rc-service ${SERVICE_NAME} restart
+ else
   echo "Nothing to do, ${FILE_NAME} up-to-date"
   rm ${UB_FOLDER}/new.${FILE_NAME##*.}
 fi
