@@ -70,12 +70,12 @@ for script in ${LXC_BUILD_FILES}; do
   cp ${LXC_PATH}/${LXC_CONT_NAME}/rootfs/home/${script%.*}.log ${LXC_PACKAGE_DIR}/${LXC_PACKAGE_NAME}_${script%.*}.log
 done
 
-# navigate to LXC container path, remove .bash_histroy, remove parts from
+# navigate to LXC container path, remove .ash_histroy, remove parts from
 # config which is generated on installation from the container archive and
 # remove installation script
 echo "Performing final cleanup from container"
 cd ${LXC_PATH}/${LXC_CONT_NAME}
-find . -name ".bash_history" -exec rm {} \;
+find . -name ".ash_history" -exec rm {} \;
 rm -rf ${LXC_PATH}/${LXC_CONT_NAME}/rootfs/home/*
 sed -i '/# Container specific configuration/,$d' config
 

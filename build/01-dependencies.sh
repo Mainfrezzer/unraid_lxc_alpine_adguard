@@ -1,4 +1,4 @@
 #!/bin/sh
 apk update
-apk add wget curl nano unbound keepalived iputils-ping bash
+apk add nano unbound keepalived
 rc-update add unbound default
