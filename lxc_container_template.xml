@@ -5,7 +5,7 @@
   <Release>3.21</Release>
   <Architecture>amd64</Architecture>
   <Repository>https://github.com/Mainfrezzer/unraid_lxc_alpine_adguard</Repository>
-  <Description>Unbound, AdGuard, keepalived</Description>
+  <Description>Unbound, AdGuard, keepalived, LANCache</Description>
   <Autostart>true</Autostart>
   <Beta>True</Beta>
   <Support>https://support.me.pls</Support>
