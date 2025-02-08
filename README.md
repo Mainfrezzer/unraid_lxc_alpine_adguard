@@ -100,15 +100,38 @@ iface eth0 inet static
 By default the cron schedules for updates are:
 - root.hints: every Sunday at 0:00
 - AdGuard Home update check: every Sunday at 0:15
-
-To change the crontab:
-- Issue `EDITOR=nano crontab -e` from a container Terminal
-- Select your prefered editor (in this example nano) by pressing 1 and ENTER
-- Change the crontab accordingly and press "CTRL + X" followed by "Y" and ENTER to save the file
+- The file is located at `/etc/periodic/weekly/roothints`
 
 ## (optional) Step 6: Configure Unbound
 - The configuration from Unbound is located at `/etc/unbound/unbound.conf`(if you need for example IPv6 or your local subnets doesn't match)
 - Don't forget to restart Unbound with `rc-service unbound restart`after editing the file or simply restart the container
+
+## (optional) Step 7: Configure LANCache
+
+The container ships with a script located at `/root/update-lancache.sh` that is not enabled by default.
+
+Before you start and run this script, it is strongly recommended that you use a SSD/NVME (without RAID/Mirror) for the LANCache and mount it to the container, to do so please stop the LXC container, edit the config (you'll find the container config in your LXC direcotry -> container name -> config eg: `/mnt/cache/lxc/CONTAINERNAME/config`, you can get the full container config path by showing the container config on the LXC page too) and add these lines:
+```
+# Mount host directory
+lxc.mount.entry = /mnt/disks/LANCache mnt/lancache none bind 0 0
+```
+In this example a disk is mounted through Unassigned devices with the label: LANCache and the path `/mnt/disks/LANCache` on Unraid (please note that the path `mnt/lancache` is the path inside the container and the missing `/` at the start is not a typo!).
+
+You can of course mount a path else where for example on the cache where the entry needs to look something like that:
+`lxc.mount.entry = /mnt/cache/LANCache mnt/lancache none bind 0 0`
+
+After mounting the path from the Host you can run this script. On the first run it will install Docker, after that LANCache is pulled from DockerHub and started, the default values for the cache itself are: CACHE_SIZE=1000g (1TB) and CACHE_INDEX_SIZE=250m
+
+If you need other values then please edit the file `/root/update-lancache.sh` and audjust the values to your preferences (please note if you exceed the disk size for the value from CACHE_SIZE the container will not start and will be stuck in a restart loop)
+
+Please also run `/root/update-lancachedomains.sh YOURIP` once to generate the AdGuardHome filterlist. (please replace `YOURIP` with the IP from your AdGuardHome or keepalived IP address <- this applies also to the crontab if you enable that schedule).
+
+To enable the LANCache, head into the AdGuardHome webinterface -> Filters -> DNS blocklists and enable the LANCache 
+
+By default, it will include all services in the `/opt/AdGuardHome/data/userfilters/lancache.conf` file. Edit that one manually to only enable the services you want to use for your lancache.
+
+To enable frequent updates from lancache remove the `#` from the last line in the `/etc/periodic/weekly/roothints`.
+
 
 ## Finished
 - Open up the AdGuardHome WebUI by clicking on the container icon and select WebUI

@@ -7,3 +7,6 @@ mkdir -p /etc/keepalived/
 cp /home/build/keepalived.conf /etc/keepalived/keepalived.conf
 chmod 644 /etc/keepalived/keepalived.conf
 cp /home/build/AdGuardHome.yaml /opt/AdGuardHome/AdGuardHome.yaml
+cp /home/build/update-lancache.sh /root/update-lancache.sh
+cp /home/build/update-lancachedomains.sh /root/update-lancachedomains.sh
+mkdir -p /opt/AdGuardHome/data/userfilters/
