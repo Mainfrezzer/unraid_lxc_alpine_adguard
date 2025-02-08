@@ -29,6 +29,7 @@
 4. [(optional) Configure keepalived](#optional-step-4-configure-keepalived)
 5. [(optional) Confiure cron](#optional-step-5-configure-cron)
 6. [(optional) Configure Unbound](#optional-step-6-configure-unbound)
+7. [(optional) Configure LANCache](#optional-step-7-configure-lancache)
 
 ## Step 1: Install Container archive
 
