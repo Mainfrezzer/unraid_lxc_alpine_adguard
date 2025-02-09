@@ -100,8 +100,8 @@ iface eth0 inet static
 ## (optional) Step 5: Configure cron
 
 By default the cron schedules for updates are:
-- root.hints: every Sunday at 0:00
-- AdGuard Home update check: every Sunday at 0:15
+- root.hints: every Saturday at 3:00
+- AdGuard Home update check: every Saturday at 3:00
 - The file is located at `/etc/periodic/weekly/roothints`
 
 ## (optional) Step 6: Configure Unbound
