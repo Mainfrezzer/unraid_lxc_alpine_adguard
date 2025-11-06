@@ -19,7 +19,7 @@
 ## LXC Distribution Infromation
 
 - alpine
-- 3.21
+- 3.22
 - amd64
 
 ## Table of Contents
